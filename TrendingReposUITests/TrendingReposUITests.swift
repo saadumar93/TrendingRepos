@@ -1,13 +1,13 @@
 //
-//  TrendingGithubReposUITests.swift
-//  TrendingGithubReposUITests
+//  TrendingReposUITests.swift
+//  TrendingReposUITests
 //
-//  Created by Tixsee on 3/2/23.
+//  Created by Saad Umar on 3/2/23.
 //
 
 import XCTest
 
-final class TrendingGithubReposUITests: XCTestCase {
+final class TrendingReposUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

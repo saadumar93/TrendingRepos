@@ -1,13 +1,13 @@
 //
-//  TrendingGithubReposUITestsLaunchTests.swift
-//  TrendingGithubReposUITests
+//  TrendingReposUITestsLaunchTests.swift
+//  TrendingReposUITests
 //
-//  Created by Tixsee on 3/2/23.
+//  Created by Saad Umar on 3/2/23.
 //
 
 import XCTest
 
-final class TrendingGithubReposUITestsLaunchTests: XCTestCase {
+final class TrendingReposUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true
