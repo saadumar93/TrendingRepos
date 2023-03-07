@@ -49,7 +49,6 @@ final class TrendingReposTests: XCTestCase {
         let expectation = view.inspection.inspect { view in
             XCTAssertNotEqual(viewModel.repos.count, 0)
         }
-        XCTAssertNotEqual(viewModel.repos.count, 0)
 
         //Hosting is required for views to live in, which can be interacted with
         ViewHosting.host(view: view)
