@@ -24,7 +24,7 @@ struct TrendingReposView: View {
             } else {
                 ZStack {
                     backgroundForOfflineView
-                    GIFView(named: "request_failed_retry").frame(maxHeight:500)
+                    LottieView(lottieFile: "request_failed_retry", autoLoop: .loop)
                 }
             }
         }

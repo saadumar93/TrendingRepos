@@ -7,11 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F15F9B229BB60EF00D4A5EB /* View Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F15F9B129BB60EF00D4A5EB /* View Modifiers.swift */; };
 		0F24E0E529B1E21F0068463F /* AppURLS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F24E0E429B1E21F0068463F /* AppURLS.swift */; };
 		0F24E0E729B1FDF00068463F /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F24E0E629B1FDF00068463F /* Strings.swift */; };
+		0F3E3F4A29BC9E6100B300A0 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3E3F4929BC9E6100B300A0 /* Service.swift */; };
+		0F3E3F4C29BCA5C000B300A0 /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3E3F4B29BCA5C000B300A0 /* NetworkServiceTests.swift */; };
+		0F3E3F5029BDF99700B300A0 /* Network Monitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3E3F4F29BDF99700B300A0 /* Network Monitor.swift */; };
+		0F3E3F5A29BDFF8200B300A0 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3E3F5929BDFF8200B300A0 /* LottieView.swift */; };
 		0F45321129B7C10500D0B7BA /* TrendingGithubRepos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F45321029B7C10500D0B7BA /* TrendingGithubRepos.swift */; };
+		0F4C522F29BBB567004DAC22 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = 0F4C522E29BBB567004DAC22 /* URLImage */; };
+		0F4C523129BBB567004DAC22 /* URLImageStore in Frameworks */ = {isa = PBXBuildFile; productRef = 0F4C523029BBB567004DAC22 /* URLImageStore */; };
 		0F73228129B72E5100048023 /* Inspection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F73228029B72E5100048023 /* Inspection.swift */; };
 		0F73228529B7308C00048023 /* Inspectable+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F73228429B7308C00048023 /* Inspectable+Model.swift */; };
+		0F8C72E629B9E5BC006E9F31 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8C72E529B9E5BC006E9F31 /* Model.swift */; };
+		0F99643929BE1E5600B551D9 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 0F99643829BE1E5600B551D9 /* Lottie */; };
+		0F99643B29BE1F8A00B551D9 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 0F99643A29BE1F8A00B551D9 /* Lottie */; };
+		0F99643D29BE210E00B551D9 /* request_failed_retry.json in Resources */ = {isa = PBXBuildFile; fileRef = 0F99643C29BE210E00B551D9 /* request_failed_retry.json */; };
+		0FBACB5129BB794C004C12F9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBACB5029BB794C004C12F9 /* SceneDelegate.swift */; };
 		0FD3052029B0978800651B1D /* TrendingGithubReposApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD3051F29B0978800651B1D /* TrendingGithubReposApp.swift */; };
 		0FD3052229B0978800651B1D /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD3052129B0978800651B1D /* PersistenceManager.swift */; };
 		0FD3052529B0978800651B1D /* TrendingRepos.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0FD3052329B0978800651B1D /* TrendingRepos.xcdatamodeld */; };
@@ -44,11 +56,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F15F9B129BB60EF00D4A5EB /* View Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View Modifiers.swift"; sourceTree = "<group>"; };
 		0F24E0E429B1E21F0068463F /* AppURLS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppURLS.swift; sourceTree = "<group>"; };
 		0F24E0E629B1FDF00068463F /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		0F3E3F4929BC9E6100B300A0 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		0F3E3F4B29BCA5C000B300A0 /* NetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTests.swift; sourceTree = "<group>"; };
+		0F3E3F4F29BDF99700B300A0 /* Network Monitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Network Monitor.swift"; sourceTree = "<group>"; };
+		0F3E3F5929BDFF8200B300A0 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		0F45321029B7C10500D0B7BA /* TrendingGithubRepos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingGithubRepos.swift; sourceTree = "<group>"; };
+		0F69419129BB8C60000A48A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		0F73228029B72E5100048023 /* Inspection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inspection.swift; sourceTree = SOURCE_ROOT; };
 		0F73228429B7308C00048023 /* Inspectable+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Inspectable+Model.swift"; sourceTree = "<group>"; };
+		0F8C72E529B9E5BC006E9F31 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		0F99643C29BE210E00B551D9 /* request_failed_retry.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = request_failed_retry.json; sourceTree = "<group>"; };
+		0FBACB5029BB794C004C12F9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		0FD3051C29B0978800651B1D /* TrendingRepos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrendingRepos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FD3051F29B0978800651B1D /* TrendingGithubReposApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingGithubReposApp.swift; sourceTree = "<group>"; };
 		0FD3052129B0978800651B1D /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
@@ -70,6 +91,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F99643929BE1E5600B551D9 /* Lottie in Frameworks */,
+				0F4C522F29BBB567004DAC22 /* URLImage in Frameworks */,
+				0F4C523129BBB567004DAC22 /* URLImageStore in Frameworks */,
 				0FD3055C29B0B7B200651B1D /* Shimmer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -79,6 +103,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0FD3055429B0AF5200651B1D /* ViewInspector in Frameworks */,
+				0F99643B29BE1F8A00B551D9 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,6 +122,7 @@
 			children = (
 				0F73228029B72E5100048023 /* Inspection.swift */,
 				0F24E0E429B1E21F0068463F /* AppURLS.swift */,
+				0F3E3F4F29BDF99700B300A0 /* Network Monitor.swift */,
 			);
 			path = Help;
 			sourceTree = "<group>";
@@ -107,6 +133,56 @@
 				0F45321029B7C10500D0B7BA /* TrendingGithubRepos.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		0F710BBD29BE147100A24A42 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0F8C72E529B9E5BC006E9F31 /* Model.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0F710BBE29BE149800A24A42 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				0F3E3F4929BC9E6100B300A0 /* Service.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		0F710BBF29BE14AF00A24A42 /* LottieFiles */ = {
+			isa = PBXGroup;
+			children = (
+				0F99643C29BE210E00B551D9 /* request_failed_retry.json */,
+			);
+			path = LottieFiles;
+			sourceTree = "<group>";
+		};
+		0F710BC029BE14F400A24A42 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				0F3E3F5929BDFF8200B300A0 /* LottieView.swift */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
+		0F710BC129BE150100A24A42 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				0FD3051F29B0978800651B1D /* TrendingGithubReposApp.swift */,
+				0FD3052629B0978800651B1D /* TrendingReposView.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		0FC8FE1129BB8E650066A7EE /* Backward Compatibility */ = {
+			isa = PBXGroup;
+			children = (
+				0FBACB5029BB794C004C12F9 /* SceneDelegate.swift */,
+				0F15F9B129BB60EF00D4A5EB /* View Modifiers.swift */,
+			);
+			path = "Backward Compatibility";
 			sourceTree = "<group>";
 		};
 		0FD3051329B0978800651B1D = {
@@ -133,12 +209,16 @@
 		0FD3051E29B0978800651B1D /* TrendingRepos */ = {
 			isa = PBXGroup;
 			children = (
+				0F69419129BB8C60000A48A3 /* Info.plist */,
 				0F24E0E629B1FDF00068463F /* Strings.swift */,
+				0F710BBD29BE147100A24A42 /* Model */,
 				0FD3052129B0978800651B1D /* PersistenceManager.swift */,
+				0F710BBE29BE149800A24A42 /* Service */,
 				0F24E0E329B1E1FC0068463F /* Help */,
 				0F45320F29B7C0C400D0B7BA /* ViewModel */,
 				0FD3056729B0E56100651B1D /* Views */,
 				0FD3052829B0978900651B1D /* Assets.xcassets */,
+				0F710BBF29BE14AF00A24A42 /* LottieFiles */,
 				0FD3052A29B0978900651B1D /* TrendingRepos.entitlements */,
 				0FD3052329B0978800651B1D /* TrendingRepos.xcdatamodeld */,
 				0FD3052B29B0978900651B1D /* Preview Content */,
@@ -158,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				0FD3053629B0978A00651B1D /* TrendingReposTests.swift */,
+				0F3E3F4B29BCA5C000B300A0 /* NetworkServiceTests.swift */,
 				0F73228429B7308C00048023 /* Inspectable+Model.swift */,
 			);
 			path = TrendingReposTests;
@@ -182,19 +263,20 @@
 		0FD3056729B0E56100651B1D /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				0FD3051F29B0978800651B1D /* TrendingGithubReposApp.swift */,
-				0FD3052629B0978800651B1D /* TrendingReposView.swift */,
-				0FD3056829B0E57200651B1D /* View Components */,
+				0F710BC129BE150100A24A42 /* Main */,
+				0F710BC029BE14F400A24A42 /* Custom */,
+				0FC8FE1129BB8E650066A7EE /* Backward Compatibility */,
+				0FD3056829B0E57200651B1D /* Components */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		0FD3056829B0E57200651B1D /* View Components */ = {
+		0FD3056829B0E57200651B1D /* Components */ = {
 			isa = PBXGroup;
 			children = (
 				0FD3055D29B0DED100651B1D /* Row.swift */,
 			);
-			path = "View Components";
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,6 +297,9 @@
 			name = TrendingRepos;
 			packageProductDependencies = (
 				0FD3055B29B0B7B200651B1D /* Shimmer */,
+				0F4C522E29BBB567004DAC22 /* URLImage */,
+				0F4C523029BBB567004DAC22 /* URLImageStore */,
+				0F99643829BE1E5600B551D9 /* Lottie */,
 			);
 			productName = TrendingGithubRepos;
 			productReference = 0FD3051C29B0978800651B1D /* TrendingRepos.app */;
@@ -236,6 +321,7 @@
 			name = TrendingReposTests;
 			packageProductDependencies = (
 				0FD3055329B0AF5200651B1D /* ViewInspector */,
+				0F99643A29BE1F8A00B551D9 /* Lottie */,
 			);
 			productName = TrendingGithubReposTests;
 			productReference = 0FD3053229B0978900651B1D /* TrendingReposTests.xctest */;
@@ -294,6 +380,8 @@
 			packageReferences = (
 				0FD3054F29B0A39F00651B1D /* XCRemoteSwiftPackageReference "ViewInspector" */,
 				0FD3055A29B0B7B200651B1D /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */,
+				0F4C522D29BBB567004DAC22 /* XCRemoteSwiftPackageReference "url-image" */,
+				0F99643729BE1E5600B551D9 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = 0FD3051D29B0978800651B1D /* Products */;
 			projectDirPath = "";
@@ -313,6 +401,7 @@
 			files = (
 				0FD3052D29B0978900651B1D /* Preview Assets.xcassets in Resources */,
 				0FD3052929B0978900651B1D /* Assets.xcassets in Resources */,
+				0F99643D29BE210E00B551D9 /* request_failed_retry.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,12 +427,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				0FD3052029B0978800651B1D /* TrendingGithubReposApp.swift in Sources */,
+				0F3E3F5A29BDFF8200B300A0 /* LottieView.swift in Sources */,
+				0F3E3F4A29BC9E6100B300A0 /* Service.swift in Sources */,
 				0F45321129B7C10500D0B7BA /* TrendingGithubRepos.swift in Sources */,
 				0FD3052529B0978800651B1D /* TrendingRepos.xcdatamodeld in Sources */,
+				0F15F9B229BB60EF00D4A5EB /* View Modifiers.swift in Sources */,
 				0F24E0E729B1FDF00068463F /* Strings.swift in Sources */,
 				0F24E0E529B1E21F0068463F /* AppURLS.swift in Sources */,
 				0FD3052729B0978800651B1D /* TrendingReposView.swift in Sources */,
+				0FBACB5129BB794C004C12F9 /* SceneDelegate.swift in Sources */,
 				0FD3055E29B0DED100651B1D /* Row.swift in Sources */,
+				0F3E3F5029BDF99700B300A0 /* Network Monitor.swift in Sources */,
+				0F8C72E629B9E5BC006E9F31 /* Model.swift in Sources */,
 				0F73228129B72E5100048023 /* Inspection.swift in Sources */,
 				0FD3052229B0978800651B1D /* PersistenceManager.swift in Sources */,
 			);
@@ -353,6 +448,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F3E3F4C29BCA5C000B300A0 /* NetworkServiceTests.swift in Sources */,
 				0F73228529B7308C00048023 /* Inspectable+Model.swift in Sources */,
 				0FD3053729B0978A00651B1D /* TrendingReposTests.swift in Sources */,
 			);
@@ -433,6 +529,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -485,6 +583,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -503,6 +603,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"TrendingRepos/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TrendingRepos/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -511,9 +612,8 @@
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
@@ -539,6 +639,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"TrendingRepos/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TrendingRepos/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -547,9 +648,8 @@
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
@@ -572,7 +672,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.saad.TrendingGithubReposTests;
@@ -594,7 +694,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.saad.TrendingGithubReposTests;
@@ -615,7 +715,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.saad.TrendingGithubReposUITests;
@@ -637,7 +737,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.saad.TrendingGithubReposUITests;
@@ -694,6 +794,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		0F4C522D29BBB567004DAC22 /* XCRemoteSwiftPackageReference "url-image" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dmytro-anokhin/url-image.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+		0F99643729BE1E5600B551D9 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 		0FD3054F29B0A39F00651B1D /* XCRemoteSwiftPackageReference "ViewInspector" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/nalexn/ViewInspector.git";
@@ -713,6 +829,26 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		0F4C522E29BBB567004DAC22 /* URLImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0F4C522D29BBB567004DAC22 /* XCRemoteSwiftPackageReference "url-image" */;
+			productName = URLImage;
+		};
+		0F4C523029BBB567004DAC22 /* URLImageStore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0F4C522D29BBB567004DAC22 /* XCRemoteSwiftPackageReference "url-image" */;
+			productName = URLImageStore;
+		};
+		0F99643829BE1E5600B551D9 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0F99643729BE1E5600B551D9 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+		0F99643A29BE1F8A00B551D9 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0F99643729BE1E5600B551D9 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
 		0FD3055329B0AF5200651B1D /* ViewInspector */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 0FD3054F29B0A39F00651B1D /* XCRemoteSwiftPackageReference "ViewInspector" */;
