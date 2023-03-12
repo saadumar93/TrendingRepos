@@ -7,6 +7,7 @@
 
 import Combine
 
+///For interaction with Views,  such as button taps etc
 internal final class Inspection<V> {
   let notice = PassthroughSubject<UInt, Never>()
   var callbacks: [UInt: (V) -> Void] = [:]

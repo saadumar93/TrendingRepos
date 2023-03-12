@@ -7,6 +7,7 @@
 
 import Foundation
 
+///Helper functions
 enum AppURLS {
     static func documentsDirectory() -> URL {
         guard let docsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last else {
