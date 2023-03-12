@@ -63,3 +63,29 @@ struct EmphasizeiOSUpgradeModifier: ViewModifier {
         }
     }
 }
+/// Refreshable Modifier with check for  iOS 15, does nothing on lesser versions, saves from repetitive checks
+/// We can also add a UIRefreshControl based pullToRefresh in future if required for below iOS 15 versions
+struct Refreshable: ViewModifier {
+    var action: () -> Void
+
+    func body(content: Content) -> some View {
+        if #available(iOS 15.0, *) {
+            content.refreshable { action() }
+        } else {
+            content.modifier(EmptyModifier())
+        }
+    }
+}
+
+///Safely clipShape without having to worry of crashing on iOS 13 - default clipShape crashes on iOS 13
+struct ClipShapeSafe: ViewModifier {
+    var shape: any Shape
+    
+    func body(content: Content) -> some View {
+        if #available(iOS 14.0, *) {
+            content.clipShape(shape)
+        } else {
+            content.modifier(EmptyModifier())
+        }
+    }
+}

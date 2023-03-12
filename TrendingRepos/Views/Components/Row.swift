@@ -24,17 +24,18 @@ struct Row: View {
         HStack(alignment: .top) {
             HStack {
                 authorImg
-                    .clipShape(Circle())
+                    .redacted(reason: isLoadingView ? .loading : nil, colorScheme)
                     .frame(width: 40, height: 40)
+                    .modifier(ClipShapeSafe(shape: Circle())) //default clipShape crashes iOS 13, hence custom workaround with version check
                     .padding(.top, 22)
                     .padding([.leading,.trailing])
-                    .redacted(reason: isLoadingView ? .loading : nil, colorScheme)
             }
             VStack(alignment:.leading) {
                 Spacer()
                 Text(repo.authorName ?? AppStrings.Stuffed.defaultRepositoryAuthor)
                     .redacted(reason: isLoadingView ? .loading : nil, colorScheme)
                 Text(repo.repoName ?? AppStrings.Stuffed.defaultRepository)
+                    .lineLimit(1)
                     .redacted(reason: isLoadingView ? .loading : nil, colorScheme)
                 if isExpanded {
                     expandedDetail
@@ -45,7 +46,9 @@ struct Row: View {
         }
         .contentShape(Rectangle())
         .onTapGesture {
-            self.isExpanded.toggle()
+            if !isLoadingView {
+                self.isExpanded.toggle()
+            }
         }
         //.modifier(AnimatingCellHeight(height: isExpanded ? 120 : 75))
     }
@@ -62,7 +65,7 @@ struct Row: View {
                     image
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width:50, height:50)
+                        .frame(width:40, height:40)
                 }
             }
         } else {

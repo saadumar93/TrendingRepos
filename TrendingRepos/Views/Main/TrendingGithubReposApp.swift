@@ -12,7 +12,7 @@ import URLImageStore
 ///For versions greater than iOS 13, Use 'App', 'Scene' and 'WindowGroup'
 @available(iOS 14.0, *)
 struct TrendingReposApp: App {
-    var networkMonitor = NetworkMonitor()
+    @StateObject var networkMonitor = NetworkMonitor()
     var body: some Scene {
         let urlImageService = URLImageService(fileStore: URLImageFileStore(),
                                                   inMemoryStore: URLImageInMemoryStore())

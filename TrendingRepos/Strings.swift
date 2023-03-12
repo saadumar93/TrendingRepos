@@ -9,8 +9,8 @@
 enum AppStrings {
     enum Stuffed {
         static let defaultAuthorImgSysName = "person.circle.fill"
-        static let defaultRepository = "Non existent Repository"
-        static let defaultRepositoryAuthor = "Non existent author"
+        static let defaultRepository = "Non existent long long Repository name"
+        static let defaultRepositoryAuthor = "No author :("
         static let defaultRepositoryDesc = "Non existent description"
         static let defaultRepositoryLanguage = "nothing-C"
         static let defaultStars:Int32 = 0

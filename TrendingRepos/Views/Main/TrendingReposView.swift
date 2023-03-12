@@ -17,18 +17,56 @@ struct TrendingReposView: View {
     internal let inspection = Inspection<Self>()
     
     var body: some View {
-        NavigationView {
-            if networkMonitor.isConnected {
-                TrendingReposInnerView(viewModel:viewModel)
-                .navigationBarTitle(Text("Trending"))
-            } else {
-                ZStack {
-                    backgroundForOfflineView
-                    LottieView(lottieFile: "request_failed_retry", autoLoop: .loop)
+        GeometryReader { geometry in
+            NavigationView {
+                if !networkMonitor.isConnected {
+                    ZStack {
+                        backgroundForOfflineView
+                        requestFailedRetryView
+                    }
+                } else {
+                    TrendingReposInnerView(viewModel:viewModel)
+                        .navigationBarTitle(Text("Trending"))
+                        .modifier(Refreshable { //Our custom ViewModifier which does the iOS version check innately
+                            viewModel.retryFetchRepos()
+                        })
                 }
             }
+            .modifier(iOSVersionCheckModifier)
+            .onReceive(inspection.notice) { self.inspection.visit(self,$0)}
         }
-        .onReceive(inspection.notice) { self.inspection.visit(self,$0)}
+    }
+    
+    @State var tap = false
+
+    @ViewBuilder
+    var requestFailedRetryView: some View {
+        GeometryReader { geometry in
+            VStack(alignment: .center) {
+                LottieView(lottieFile: "request_failed_retry", autoLoop: .loop)
+                ZStack {
+                    Text("Retry")
+                    .foregroundColor(.green)
+                    .frame(width: geometry.size.width - 70, height: 40)
+                    .overlay(//Better than cornerRadius, greater control
+                        RoundedRectangle(cornerRadius: 5)
+                            .stroke(.green, lineWidth: 1.25)
+                            
+                    )
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        viewModel.retryFetchRepos()
+                        tap.toggle()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                            tap = false
+                        }
+                    }
+                    .scaleEffect(tap ? 1.2 : 1)
+                    .animation(.spring(response: 0.4, dampingFraction: 0.6))
+                }
+               
+            }
+        }
     }
     
     @ViewBuilder
@@ -42,13 +80,13 @@ struct TrendingReposView: View {
     
   ///We can uncomment and use the following modifier to display a popup suggesting user to
     ///use iOS 14 and above because of the known frame issue in iOS 13
-//    var iOSVersionCheckModifier: some ViewModifier {
-//        if #available(iOS 14, *) {
-//            return EmptyModifier()
-//        } else {
-//            return EmphasizeiOSUpgradeModifier()
-//        }
-//    }
+    var iOSVersionCheckModifier: some ViewModifier {
+        if #available(iOS 14, *) {
+            return EmptyModifier()
+        } else {
+            return EmphasizeiOSUpgradeModifier()
+        }
+    }
 }
 
 struct TrendingReposInnerView: View {

@@ -24,11 +24,16 @@ class TrendingGithubRepos: ObservableObject {
     init(with service: Service = NetworkService(), persistenceManager: PersistenceManager = PersistenceManager.shared) {
         self.service = service
         self.persistenceManager = persistenceManager
-        Task { @MainActor in
-            self.repos = try await self.fetchAllRepositories()
+        Task {
+            await self.fetchAllRepositories()
         }
     }
     
+    func retryFetchRepos() {
+        Task {
+            await self.fetchAllRepositories()
+        }
+    }
     private func getAllPersistentRepositories() -> [Repository] {
         var repositories:[Repository] = []
         // Create a fetch request for the Repository entity
@@ -62,26 +67,32 @@ extension Repository {
 }
 
 extension TrendingGithubRepos {
-    
-    ///Standard async await function, meant to be called in Task
-    ///
-    func fetchAllRepositories() async throws -> [Repository] {
-        var request = ReposRequest()
-        let result = try await service.get(request: request)
+    ///Standard async  function, meant to be awaited  in Task
+    @MainActor
+    func fetchAllRepositories() async {
+        let request = ReposRequest()
+        var fetchedRepos:[Repository] = []
         
-        switch result {
-        case .success(let data):
-            let decoder = JSONDecoder()
-            return try decoder.decode(TrendingReposModel.self, from: data).items.repositories()
-        case .failure(_):
-            return []
+        do {
+            let result = try await service.get(request: request)
             
+            switch result {
+            case .success(let data):
+                let decoder = JSONDecoder()
+                fetchedRepos = try decoder.decode(TrendingReposModel.self, from: data).items.repositories()
+            case .failure(_):
+                break
+            }
+        } catch {
+            print(error.localizedDescription)
         }
-        
+        self.repos = fetchedRepos
     }
-    
 }
 ///Concrete request to get all repos
+///Discussion: We are not passing any value for cachePolicy in URLRequest.init() which defaults to useProtocolCachePolicy
+///which is well illustrated in Figure 1 here: https://developer.apple.com/documentation/foundation/nsurlrequest/cachepolicy/useprotocolcachepolicy
+
 struct ReposRequest: Request {
     var urlRequest: URLRequest {
         let url = URL(string: "https://api.github.com/search/repositories?q=language=+sort:stars")

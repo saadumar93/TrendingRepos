@@ -11,9 +11,10 @@ import SwiftUI
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+    let networkMonitor = NetworkMonitor()
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        let trendingReposView = TrendingReposView(viewModel: TrendingGithubRepos())
+        let trendingReposView = TrendingReposView(viewModel: TrendingGithubRepos()).environmentObject(networkMonitor)
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
