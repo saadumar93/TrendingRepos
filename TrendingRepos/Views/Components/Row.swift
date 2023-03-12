@@ -13,6 +13,7 @@ struct Row: View {
     @Environment(\.colorScheme) var colorScheme
     private(set) var repo:Repository
     var isLoadingView = false
+    @State var isExpanded = false
     
     init(Repository:Repository, isLoadingView:Bool = false) {
         self.repo = Repository
@@ -20,13 +21,14 @@ struct Row: View {
     }
     
     var body: some View {
-        HStack {
+        HStack(alignment: .top) {
             HStack {
                 authorImg
-                    .frame(minWidth: 50, minHeight: 50)
+                    .clipShape(Circle())
+                    .frame(width: 40, height: 40)
+                    .padding(.top, 22)
                     .padding([.leading,.trailing])
                     .redacted(reason: isLoadingView ? .loading : nil, colorScheme)
-                    .clipShape(Circle())
             }
             VStack(alignment:.leading) {
                 Spacer()
@@ -34,20 +36,22 @@ struct Row: View {
                     .redacted(reason: isLoadingView ? .loading : nil, colorScheme)
                 Text(repo.repoName ?? AppStrings.Stuffed.defaultRepository)
                     .redacted(reason: isLoadingView ? .loading : nil, colorScheme)
-                Text(repo.repoDesc ?? AppStrings.Stuffed.defaultRepositoryDesc)
-                    .lineLimit(3)
-                    .redacted(reason: isLoadingView ? .loading : nil, colorScheme)
-                Spacer()
-                HStack {
-                    Text(repo.language ?? AppStrings.Stuffed.defaultRepositoryLanguage)
-                        .redacted(reason: isLoadingView ? .loading : nil, colorScheme)
-                    Text("\(repo.stars)")
-                        .redacted(reason: isLoadingView ? .loading : nil, colorScheme)
+                if isExpanded {
+                    expandedDetail
                 }
                 Spacer()
             }
             Spacer()
         }
+        .contentShape(Rectangle())
+        .onTapGesture {
+            self.isExpanded.toggle()
+        }
+        //.modifier(AnimatingCellHeight(height: isExpanded ? 120 : 75))
+    }
+    
+    var randomColor: Color {
+        Color(red:.random(in: 0...1),green: .random(in: 0...1), blue: .random(in: 0...1))
     }
     
     @ViewBuilder
@@ -69,6 +73,28 @@ struct Row: View {
             
         }
     }
+    
+    @ViewBuilder
+    var expandedDetail: some View {
+        Text(repo.repoDesc ?? AppStrings.Stuffed.defaultRepositoryDesc)
+            .lineLimit(3)
+            .redacted(reason: isLoadingView ? .loading : nil, colorScheme)
+        Spacer()
+        HStack {
+            Circle()
+                .fill(randomColor)
+                .frame(width: 12, height: 12)
+            Text(repo.language ?? AppStrings.Stuffed.defaultRepositoryLanguage)
+                .lineLimit(1)
+                .padding(.leading,3)
+                .padding(.trailing,12)
+                .redacted(reason: isLoadingView ? .loading : nil, colorScheme)
+            Image("star_black_20pt")
+                .foregroundColor(.yellow)
+            Text("\(repo.stars)")
+                .redacted(reason: isLoadingView ? .loading : nil, colorScheme)
+        }
+    }
 }
 
 struct Row_Previews: PreviewProvider {
@@ -86,5 +112,18 @@ struct Row_Dark_Previews: PreviewProvider {
             Row(Repository: Repository.init(context: PersistenceManager.shared.container.viewContext))
         }
         .preferredColorScheme(.dark)
+    }
+}
+
+struct AnimatingCellHeight: AnimatableModifier {
+    var height: CGFloat = 0
+
+    var animatableData: CGFloat {
+        get { height }
+        set { height = newValue }
+    }
+
+    func body(content: Content) -> some View {
+        content.frame(height: height)
     }
 }

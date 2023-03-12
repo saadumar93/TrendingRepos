@@ -12,7 +12,7 @@ enum AppStrings {
         static let defaultRepository = "Non existent Repository"
         static let defaultRepositoryAuthor = "Non existent author"
         static let defaultRepositoryDesc = "Non existent description"
-        static let defaultRepositoryLanguage = "Uninvented language :("
+        static let defaultRepositoryLanguage = "nothing-C"
         static let defaultStars:Int32 = 0
     }
     enum Empty {
