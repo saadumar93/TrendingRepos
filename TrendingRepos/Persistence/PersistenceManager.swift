@@ -8,6 +8,7 @@
 import CoreData
 import SwiftUI
 
+///Designed specifically for future cases where we would be having a need to persist data locally, right now not using it the way it is meant to be used . :)
 class PersistenceManager:NSObject {
     static let shared = PersistenceManager()
     
@@ -22,6 +23,7 @@ class PersistenceManager:NSObject {
         for _ in 0..<10 {
             let newItem = Repository(context: viewContext)
             newItem.id = UUID()
+            newItem.cachedDate = Date()
             newItem.authorName = names[Int.random(in: 0...6)]
             newItem.repoName = repos[Int.random(in: 0...6)]
             newItem.repoDesc = "Cool lib!"
@@ -98,5 +100,18 @@ class PersistenceManager:NSObject {
             storeDescription.type = NSSQLiteStoreType
         }
         return storeDescription
+    }
+    
+    func deleteAllData(_ entity:String) {
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: entity)
+        let predicate = NSPredicate(format: "cachedDate < %@", NSDate())
+        fetchRequest.predicate = predicate
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+
+        do {
+            try self.container.persistentStoreCoordinator.execute(deleteRequest, with: self.container.viewContext)
+        } catch {
+            print(error.localizedDescription)
+        }
     }
 }

@@ -24,12 +24,14 @@ class TrendingGithubRepos: ObservableObject {
     init(with service: Service = NetworkService(), persistenceManager: PersistenceManager = PersistenceManager.shared) {
         self.service = service
         self.persistenceManager = persistenceManager
+        self.persistenceManager.deleteAllData("Repository") //clear CoreData for fresh storage
         Task {
             await self.fetchAllRepositories()
         }
     }
     
     func retryFetchRepos() {
+        self.persistenceManager.deleteAllData("Repository") //clear CoreData for fresh storage
         Task {
             await self.fetchAllRepositories()
         }
@@ -51,6 +53,19 @@ class TrendingGithubRepos: ObservableObject {
         }
         return repositories
     }
+    
+    ///Call this function after have successfully retrieved repos from network and set to self.repos
+    private func persistAllRepositories() {
+        do {
+            try self.persistenceManager.container.viewContext.save()
+
+        } catch {
+            // Replace this implementation with code to handle the error appropriately.
+            // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+            let nsError = error as NSError
+            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+        }
+    }
 }
 
 extension Repository {
@@ -58,6 +73,7 @@ extension Repository {
     convenience init(from model:Repo) {
         self.init(context: PersistenceManager.shared.container.viewContext)
         self.id = UUID()
+        self.cachedDate = Date()
         self.authorImageURL = model.owner.avatarURL
         self.authorName = model.owner.login
         self.repoName = model.name
@@ -69,6 +85,7 @@ extension Repository {
     convenience init(with id: UUID) {
         self.init(context: PersistenceManager.shared.container.viewContext)
         self.id = id
+        self.cachedDate = Date()
     }
 }
 
@@ -92,7 +109,16 @@ extension TrendingGithubRepos {
         } catch {
             print(error.localizedDescription)
         }
-        self.repos = fetchedRepos
+        if !fetchedRepos.isEmpty {
+            self.repos = fetchedRepos
+            self.persistAllRepositories()
+        } //else {
+        //FIXME: Complete the following implementation to have the user at least see last fetched api response, incase off no internet :)
+//            let persistentRepos = getAllPersistentRepositories()
+//            if !persistentRepos.isEmpty {
+//                self.repos = persistentRepos
+//            }
+//        }
     }
 }
 ///Concrete request to get all repos

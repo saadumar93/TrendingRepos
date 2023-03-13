@@ -210,9 +210,9 @@
 			isa = PBXGroup;
 			children = (
 				0F69419129BB8C60000A48A3 /* Info.plist */,
-				0F24E0E629B1FDF00068463F /* Strings.swift */,
+				0FDF074E29BF7E6B0074FF6E /* Resources */,
 				0F710BBD29BE147100A24A42 /* Model */,
-				0FD3052129B0978800651B1D /* PersistenceManager.swift */,
+				0FDF074D29BF7E5D0074FF6E /* Persistence */,
 				0F710BBE29BE149800A24A42 /* Service */,
 				0F24E0E329B1E1FC0068463F /* Help */,
 				0F45320F29B7C0C400D0B7BA /* ViewModel */,
@@ -277,6 +277,22 @@
 				0FD3055D29B0DED100651B1D /* Row.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		0FDF074D29BF7E5D0074FF6E /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				0FD3052129B0978800651B1D /* PersistenceManager.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
+		0FDF074E29BF7E6B0074FF6E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0F24E0E629B1FDF00068463F /* Strings.swift */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
