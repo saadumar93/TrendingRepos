@@ -111,7 +111,8 @@ extension TrendingGithubRepos {
         }
         if !fetchedRepos.isEmpty {
             self.repos = fetchedRepos
-            self.persistAllRepositories()
+            //TODO: do the below fix and call this function to saving the repos model in CoreData
+            //self.persistAllRepositories()
         } //else {
         //FIXME: Complete the following implementation to have the user at least see last fetched api response, incase off no internet :)
 //            let persistentRepos = getAllPersistentRepositories()

@@ -26,8 +26,15 @@ final class TrendingReposTests: XCTestCase {
     ///Testing row with empty/default fields
     func testRowDefaultText() throws {
         
-        let Repository = Repository.init(context: PersistenceManager.shared.container.viewContext)
-        let view = Row(Repository: Repository)
+        let repository = Repository.init(context: PersistenceManager(inMemory: true).container.viewContext)
+        repository.authorName = AppStrings.Stuffed.defaultRepositoryAuthor
+        repository.repoName = AppStrings.Stuffed.defaultRepository
+        repository.repoDesc = AppStrings.Stuffed.defaultRepositoryDesc
+        repository.language = AppStrings.Stuffed.defaultRepositoryLanguage
+        repository.stars = AppStrings.Stuffed.defaultStars
+        
+        let view = Row(Repository: repository)
+        
         let inspectedRepositoryImage = try view
             .inspect()
             .hStack()
@@ -47,21 +54,27 @@ final class TrendingReposTests: XCTestCase {
             .find(text: AppStrings.Stuffed.defaultRepository)
             .string()
         XCTAssertEqual(AppStrings.Stuffed.defaultRepository, inspectedRepository)
-        let inspectedRepositoryDesc = try view
-            .inspect()
-            .find(text: AppStrings.Stuffed.defaultRepositoryDesc)
-            .string()
-        XCTAssertEqual(AppStrings.Stuffed.defaultRepositoryDesc, inspectedRepositoryDesc)
-        let inspectedRepositoryLanguage = try view
-            .inspect()
-            .find(text: AppStrings.Stuffed.defaultRepositoryLanguage)
-            .string()
-        XCTAssertEqual(AppStrings.Stuffed.defaultRepositoryLanguage, inspectedRepositoryLanguage)
-        let inspectedReposStars = try view
-            .inspect()
-            .find(text: "\(AppStrings.Stuffed.defaultStars)")
-            .string()
-        XCTAssertEqual(String(describing: AppStrings.Stuffed.defaultStars), inspectedReposStars)
+        
+        //Test Row, tap and expand behaviour
+        let expectation = view.inspection.inspect { view in
+            try view.hStack().callOnTapGesture()
+            let inspectedRepositoryDesc = try view
+                .find(text: AppStrings.Stuffed.defaultRepositoryDesc)
+                .string()
+            XCTAssertEqual(AppStrings.Stuffed.defaultRepositoryDesc, inspectedRepositoryDesc)
+            let inspectedRepositoryLanguage = try view
+                .find(text: AppStrings.Stuffed.defaultRepositoryLanguage)
+                .string()
+            XCTAssertEqual(AppStrings.Stuffed.defaultRepositoryLanguage, inspectedRepositoryLanguage)
+            let inspectedReposStars = try view
+                .find(text: "\(AppStrings.Stuffed.defaultStars)")
+                .string()
+            XCTAssertEqual(String(describing: AppStrings.Stuffed.defaultStars), inspectedReposStars)
+        }
+        
+        //ViewHosting allows the Views to be 'alive' by letting them live in itself, hence we are able to interact with the views
+        ViewHosting.host(view: view)
+        self.wait(for: [expectation], timeout: 1.0)
         
     }
     
@@ -99,7 +112,7 @@ final class TrendingReposTests: XCTestCase {
         
         //will not be able to find offline animation (GIFView) if it is not up for some reason
         if !networkMonitor.isConnected {
-            _ = try view.inspect().find(GIFView.self).actualView()
+            _ = try view.inspect().find(LottieView.self).actualView()
         } else {
             _ = try view.inspect().find(TrendingReposInnerView.self).actualView()
         }
@@ -111,17 +124,14 @@ final class TrendingReposTests: XCTestCase {
         let viewModel = TrendingGithubRepos(persistenceManager: PersistenceManager.preview)
         let expectation = expectation(description: "Getting repos from network call")
         
-        //Setting assertion in view inspection for future (interacting with UI to measure change)
-        //For example pullToRefresh should actually bring up new content
-        //Which can be done in the following inspection closure
-
-        let repos = try await viewModel.fetchAllRepositories()
+        await viewModel.fetchAllRepositories()
         expectation.fulfill()
         
         await waitForExpectations(timeout: 10.0)
 
-        XCTAssertFalse(repos.isEmpty)
-        
+        Task { @MainActor in
+            XCTAssertFalse(viewModel.repos.isEmpty)
+        }
     }
     
 }

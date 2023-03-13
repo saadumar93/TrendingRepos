@@ -15,6 +15,8 @@ struct Row: View {
     var isLoadingView = false
     @State var isExpanded = false
     
+    internal let inspection = Inspection<Self>()
+    
     init(Repository:Repository, isLoadingView:Bool = false) {
         self.repo = Repository
         self.isLoadingView = isLoadingView
@@ -50,6 +52,7 @@ struct Row: View {
                 self.isExpanded.toggle()
             }
         }
+        .onReceive(inspection.notice) { self.inspection.visit(self,$0)}
         //.modifier(AnimatingCellHeight(height: isExpanded ? 120 : 75))
     }
     
