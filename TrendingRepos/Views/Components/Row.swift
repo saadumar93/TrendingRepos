@@ -53,7 +53,6 @@ struct Row: View {
             }
         }
         .onReceive(inspection.notice) { self.inspection.visit(self,$0)}
-        //.modifier(AnimatingCellHeight(height: isExpanded ? 120 : 75))
     }
     
     var randomColor: Color {
@@ -121,6 +120,8 @@ struct Row_Dark_Previews: PreviewProvider {
     }
 }
 
+//TODO: Complete AnimatingCellHeight implementation and move the correct file  ie ViewModifiers
+///Animation Modifier to expand the cell animatingly
 struct AnimatingCellHeight: AnimatableModifier {
     var height: CGFloat = 0
 
@@ -130,6 +131,8 @@ struct AnimatingCellHeight: AnimatableModifier {
     }
 
     func body(content: Content) -> some View {
-        content.frame(height: height)
+        withAnimation {
+            content.frame(height: height)
+        }
     }
 }
