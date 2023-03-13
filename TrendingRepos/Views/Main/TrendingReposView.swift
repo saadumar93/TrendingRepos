@@ -19,17 +19,17 @@ struct TrendingReposView: View {
     var body: some View {
         GeometryReader { geometry in
             NavigationView {
-                if !networkMonitor.isConnected {
-                    ZStack {
-                        backgroundForOfflineView
-                        requestFailedRetryView
-                    }
-                } else {
+                if networkMonitor.isConnected {
                     TrendingReposInnerView(viewModel:viewModel)
                         .navigationBarTitle(Text("Trending"))
                         .modifier(Refreshable { //Our custom ViewModifier which does the iOS version check innately
                             viewModel.retryFetchRepos()
                         })
+                } else {
+                    ZStack {
+                        backgroundForOfflineView
+                        requestFailedRetryView
+                    }
                 }
             }
             .modifier(iOSVersionCheckModifier)
@@ -94,7 +94,7 @@ struct TrendingReposInnerView: View {
     
     var body: some View {
         if !viewModel.repos.isEmpty {
-            List(viewModel.repos) { item in
+            List(viewModel.repos, id:\.id) { item in
                 Row(Repository: item, isLoadingView: viewModel.repos.isEmpty)
             }
         } else {
@@ -104,10 +104,18 @@ struct TrendingReposInnerView: View {
     
     @ViewBuilder
     var loadingView: some View {
-        let emptyRepos = Array.init(repeating: Repository.init(context: PersistenceManager.shared.container.viewContext), count: 9)
-        List(emptyRepos) { item in
+        List(emptyRepos, id: \.id) { item in
             Row(Repository: item, isLoadingView: viewModel.repos.isEmpty)
         }
+    }
+    
+    var emptyRepos: [Repository] {
+        var repos : [Repository] = []
+        for _ in 0..<10 {
+            let repo = Repository.init(with: UUID())
+            repos.append(repo)
+        }
+        return repos
     }
 }
 

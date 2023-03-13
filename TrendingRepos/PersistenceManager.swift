@@ -21,6 +21,7 @@ class PersistenceManager:NSObject {
         let viewContext = result.container.viewContext
         for _ in 0..<10 {
             let newItem = Repository(context: viewContext)
+            newItem.id = UUID()
             newItem.authorName = names[Int.random(in: 0...6)]
             newItem.repoName = repos[Int.random(in: 0...6)]
             newItem.repoDesc = "Cool lib!"

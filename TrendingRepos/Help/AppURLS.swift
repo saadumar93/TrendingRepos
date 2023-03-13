@@ -15,4 +15,7 @@ enum AppURLS {
         }
         return URL(fileURLWithPath: docsPath)
     }
+    enum Endpoints {
+        static let trendingRepos = "https://api.github.com/search/repositories?q=language=+sort:stars"
+    }
 }

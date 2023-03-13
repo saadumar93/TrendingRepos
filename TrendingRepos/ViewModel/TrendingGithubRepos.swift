@@ -57,12 +57,18 @@ extension Repository {
     ///Convenience init to initialize Repository Core Data model from the Repo App Model
     convenience init(from model:Repo) {
         self.init(context: PersistenceManager.shared.container.viewContext)
+        self.id = UUID()
         self.authorImageURL = model.owner.avatarURL
         self.authorName = model.owner.login
         self.repoName = model.name
         self.repoDesc = model.itemDescription
         self.language = model.language
         self.stars = Int32(model.stargazersCount)
+    }
+    ///Convenience init for empty views
+    convenience init(with id: UUID) {
+        self.init(context: PersistenceManager.shared.container.viewContext)
+        self.id = id
     }
 }
 
@@ -95,7 +101,7 @@ extension TrendingGithubRepos {
 
 struct ReposRequest: Request {
     var urlRequest: URLRequest {
-        let url = URL(string: "https://api.github.com/search/repositories?q=language=+sort:stars")
+        let url = URL(string: AppURLS.Endpoints.trendingRepos)
         let urlRequest = URLRequest(url: url!)
         return urlRequest
     }
